@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<style>
+			*{padding: 0;
+			margin: 0; }
+		.main{
+		width: 100vw;
+		height: 100vh;
+		background: #eee;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+
+		}
+	 .box{
+		box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),-6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+		display: flex;
+		align-items: center;
+		background: #eee;
+		transition: 1s;
+		padding: 25px;
+		border-radius: 55px;
+		}
+		
+		 
+	.box img{
+		width: 50px;
+			cursor: pointer;
+		}
+		 .input{
+			font-size: 18px;
+			width: 0px;
+			border: none;
+			background: transparent;
+			outline: none;
+			padding: 0px 0px;
+			margin-left: 0px;
+				transition: 1s;
+		}
+	.box.active .input{
+			width: 300px;
+		padding: 12px 20px;
+
+		}
+		.items{
+		list-style: none;
+		background: transparent;
+		padding: 10px;
+		margin-top: 3px;
+		color: black;
+		cursor: pointer;
+		border-radius: 20px;
+		font-family: sans-serif;
+		letter-spacing: 2px;
+				}
+		
+		.options{
+		border-radius: 20px;
+		background: #eee;
+		border: none;
+		overflow: hidden;
+		margin-top: 15px;
+		margin-left: 20px;
+		display: flex;
+		flex-direction: column;
+		padding: 10px;
+	
+		text-align: center;
+		width: 50%;
+		box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),-6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+		}
+		.items:hover{
+		background: orange;
+		color: white;
+		font-weight: bold;
+		}
+		.texta{
+			margin-bottom: 50px;
+			font-family: cursive;
+			font-size: 60px;
+			color: #eee;
+	   filter: drop-shadow(8px 8px 5px lightblue);
+	   position: relative;
+	   overflow: hidden;
+		 transition: 0.6s;
+		}
+		.texta::before{
+			content: "GDorker";
+			font-size: 60px;
+			font-family: cursive;
+			position: absolute;
+			top: -7px;
+			color: skyblue;
+		}
+		.texta::after{
+			content: "GDorker";
+			font-size: 60px;
+			font-family: cursive;
+			position: absolute;
+			left: 0px;
+			top: -100px;
+			color: red;
+			transition: 0.6s;
+		}
+		.texta:hover::after{
+			content: "GDorker";
+			font-size: 60px;
+			font-family: cursive;
+			position: absolute;
+			left: 0px;
+			top: -8px;
+			color: red;
+			transition: 0.6s;
+		}
+		@media (max-width: 430px) {
+			.box.active .input{
+				width: 230px;
+				padding: 10px 16px;
+			}
+		}
+		</style>
+	</head>
+	<body>
+
+
+		<div class="main">
+			<h2 class="texta">GDorker</h2>
+			<div class="box" id="ui">
+					<img src="googleicon.png" class="searchicon">
+					<input type="text" id="searchbox" placeholder="Search Me" class="textinput input" value="" name="inputbox">	
+			</div>
+
+			<div class="options">
+				<ul>
+					<li class="items item0">SIMPLE SEARCH</li>
+					<li class="items item1">COMPRESSED FILE</li>
+					<li class="items item2">VIDEO FILE</li>
+					<li class="items item3">EBOOK</li>
+					<li class="items item4">DOCUMENT</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script>
+		var searchText=document.querySelector('.textinput');
+		var searchbtn=document.getElementById('searchbutton');
+		var option0=document.querySelector('.item0');
+		var option1=document.querySelector('.item1');
+		var option2=document.querySelector('.item2');
+		var option3=document.querySelector('.item3');
+		var option4=document.querySelector('.item4');
+		option0.onclick=function(){
+			let url='https://www.google.com/search?q=' + searchText.value;
+			window.open(url,'_self')
+		}
+		option1.onclick=function(){
+			let url='https://www.google.com/search?q=' + searchText.value + "%20intitle:index+of+(rar|zip)";
+			window.open(url,'_self')
+		}
+		option2.onclick=function(){
+			let url='https://www.google.com/search?q=' + searchText.value + "%20intitle:index+of+(mp4|avi|mkv)";
+			window.open(url,'_self')
+		}
+		option3.onclick=function(){
+			let url='https://www.google.com/search?q=' + searchText.value + "%20&source=lnms&tbm=bks";
+			window.open(url,'_self')
+		}
+		option4.onclick=function(){
+			let url='https://www.google.com/search?q=' + searchText.value + "%20intitle:index+of+(doc|docx|ppt|pptx|pdf)";
+			window.open(url,'_self')
+		}
+		var ui=document.getElementById('ui');
+		var icon=document.querySelector('.searchicon');
+		icon.onclick=function(){
+			ui.classList.toggle('active');
+		}
+		
+	</script>
+</body>
+</html>
